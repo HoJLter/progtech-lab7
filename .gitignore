@@ -3,6 +3,7 @@
 /out/
 /build-*/
 cmake-build-*/
+AGENTS.md
 
 # CMake generated files
 CMakeCache.txt

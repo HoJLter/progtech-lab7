@@ -1,17 +1,19 @@
 #pragma once
 #include "SFML/Graphics.hpp"
-#include "Map.h"
 
+#include "GameLogic.h"
+#include "GameRenderer.h"
 
 class GameEngine {
 	sf::RenderWindow window;
-	Map map;
+	GameLogic logic;
+	GameRenderer renderer;
 
 private:
 	void handleEvents();
-	void render();
 
 public:
 	GameEngine(sf::Vector2u size);
 	void run();
+
 };

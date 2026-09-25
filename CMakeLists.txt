@@ -1,8 +1,8 @@
 ﻿cmake_minimum_required (VERSION 3.10)
 
-project ("progtech-lab8")
+project ("progtech-lab7")
 
-add_executable (main "src/main.cpp" "include/GameEngine.h" "src/Entities.cpp" "include/Map.h" "src/GameEngine.cpp" "src/Map.cpp" "src/Entities.cpp")
+add_executable (main "src/main.cpp" "include/GameEngine.h" "src/GameEngine.cpp" "src/GameRenderer.cpp" "src/GameLogic.cpp" "include/GameLogic.h" "include/GameRenderer.h")
 include_directories("include")
 
 

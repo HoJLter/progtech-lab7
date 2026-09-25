@@ -2,8 +2,11 @@
 
 
 GameEngine::GameEngine(sf::Vector2u size):
-window(sf::VideoMode(size), "Forest Game"),
-map(window)
+window(sf::VideoMode(size), 
+    "Forest Game", 
+    sf::Style::Titlebar | sf::Style::Close, 
+    sf::State::Windowed),
+    renderer(window, logic.getField())
 {
 
 }
@@ -13,24 +16,18 @@ void GameEngine::handleEvents() {
     {
         if (event->is<sf::Event::Closed>())
             window.close();
-
-        map.handleEvent(*event);
     }
 }
 
 
-void GameEngine::render() {
-    window.clear();
-    
-    map.render();
-
-    window.display();
-}
 
 void GameEngine::run() {
     while (window.isOpen())
     {
         handleEvents();
-        render();
+
+        window.clear();
+        renderer.render();
+        window.display();
     }
 }
