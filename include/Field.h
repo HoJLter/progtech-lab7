@@ -1,10 +1,10 @@
 #pragma once
 #include <array>
-#include <iostream>
-#include <iomanip>
+#include <stdexcept>
+#define MAP_SIZE 10
 
 
-enum class tileType {
+enum class TileType {
 	Tree,
 	Tent,
 	TentUnrevealed,
@@ -13,18 +13,25 @@ enum class tileType {
 
 class Field {
 private:
-	std::array<std::array<tileType, 10>, 10> tiles;
-	std::array<int, 10> rowHints;
-	std::array<int, 10> colHints;
+	std::array<std::array<TileType, MAP_SIZE>, MAP_SIZE> tiles;
+	std::array<int, MAP_SIZE> rowHints;
+	std::array<int, MAP_SIZE> colHints;
 
 public:
-	void setTile(int i, int j, tileType tile) {
-		tiles[i][j] = tile;
+	void setTile(int row, int col, TileType tile) {
+		if (row >= 0 && col >= 0 &&
+			row < MAP_SIZE && col < MAP_SIZE) {
+			tiles[row][col] = tile;
+		}
 	};
 
-	tileType getTile(int row, int col) const {
-		if ((0 <= row < 10) && (0 <= col <= 10)) {
+	TileType getTile(int row, int col) const {
+		if (row >= 0 && col >= 0 &&
+			row < MAP_SIZE && col < MAP_SIZE) {
 			return tiles[row][col];
+		}
+		else {
+			throw std::runtime_error("getTile() failed!");
 		}
 	};
 

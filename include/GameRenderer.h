@@ -4,12 +4,10 @@
 
 class GameRenderer {
 	sf::RenderWindow& window;
-	const Field& field;
 
 public:
 	GameRenderer(sf::RenderWindow& target) : 
-		window(target), 
-		field(field) { }
+		window(target) { }
 
 	void render(const Field& field);
 };
