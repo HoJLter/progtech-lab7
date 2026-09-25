@@ -6,7 +6,7 @@ window(sf::VideoMode(size),
     "Forest Game", 
     sf::Style::Titlebar | sf::Style::Close, 
     sf::State::Windowed),
-    renderer(window, logic.getField())
+    renderer(window)
 {
 
 }
@@ -27,7 +27,7 @@ void GameEngine::run() {
         handleEvents();
 
         window.clear();
-        renderer.render();
+        renderer.render(logic.getField());
         window.display();
     }
 }

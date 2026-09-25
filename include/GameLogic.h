@@ -1,9 +1,5 @@
 #pragma once
-
-
-class Field {
-
-};
+#include "Field.h"
 
 
 class GameLogic {

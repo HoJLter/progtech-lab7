@@ -1,15 +1,15 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "GameLogic.h"
+#include "Field.h"
 
 class GameRenderer {
 	sf::RenderWindow& window;
 	const Field& field;
 
 public:
-	GameRenderer(sf::RenderWindow& target, const Field& field) : 
+	GameRenderer(sf::RenderWindow& target) : 
 		window(target), 
 		field(field) { }
 
-	void render();
+	void render(const Field& field);
 };

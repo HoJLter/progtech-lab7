@@ -1,5 +1,5 @@
 #include "GameRenderer.h"
 
-void GameRenderer::render() {
+void GameRenderer::render(const Field& field) {
 
 }
