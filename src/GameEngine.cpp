@@ -14,7 +14,7 @@ void GameEngine::handleEvents() {
         if (event->is<sf::Event::Closed>())
             window.close();
 
-        map.handleEvent(event);
+        map.handleEvent(*event);
     }
 }
 
