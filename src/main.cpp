@@ -1,23 +1,9 @@
 #include "SFML/Graphics.hpp"
+#include "GameEngine.h"
+
 
 int main()
 {
-    sf::RenderWindow window(
-        sf::VideoMode({ 800, 800 }),
-        "SFML"
-    );
-
-    while (window.isOpen())
-    {
-        while (auto event = window.pollEvent())
-        {
-            if (event->is<sf::Event::Closed>())
-                window.close();
-        }
-
-        window.clear();
-        window.display();
-    }
-
-    return 0;
+    GameEngine engine({ 800, 800 });
+    engine.run();
 }

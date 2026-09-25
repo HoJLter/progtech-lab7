@@ -2,7 +2,7 @@
 
 project ("progtech-lab8")
 
-add_executable (main "src/main.cpp")
+add_executable (main "src/main.cpp" "include/GameEngine.h" "src/Entities.cpp" "include/Map.h" "src/GameEngine.cpp" "src/Map.cpp" "src/Entities.cpp")
 include_directories("include")
 
 
