@@ -2,7 +2,7 @@
 
 project ("progtech-lab7")
 
-add_executable (main "src/main.cpp" "include/GameEngine.h" "src/GameEngine.cpp" "src/GameRenderer.cpp" "src/GameLogic.cpp" "include/GameLogic.h" "include/GameRenderer.h" "src/utils.cpp")
+add_executable (main "src/main.cpp" "include/GameEngine.h" "src/GameEngine.cpp" "src/GameRenderer.cpp" "src/GameLogic.cpp" "include/GameLogic.h" "include/GameRenderer.h" "src/Utils.cpp" "include/Utils.h")
 include_directories("include")
 
 

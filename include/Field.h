@@ -14,8 +14,6 @@ enum class TileType {
 class Field {
 private:
 	std::array<std::array<TileType, MAP_SIZE>, MAP_SIZE> tiles;
-	std::array<int, MAP_SIZE> rowHints;
-	std::array<int, MAP_SIZE> colHints;
 
 public:
 	void setTile(int row, int col, TileType tile) {
@@ -38,5 +36,12 @@ public:
 		}
 	};
 
+	void clearField() {
+		for (auto& row : tiles) {
+			for (auto& e : row) {
+				e = TileType::None;
+			}
+		}
+	}
 };
 

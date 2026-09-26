@@ -1,22 +1,20 @@
-#include "Field.h"
+#include "Utils.h"
 #include <iostream>
 #include <iomanip>
 
-class Utils {
-public:
-	static void print(const Field& field) {
-		for (int i = 0; i < MAP_SIZE; i++) {
-			for (int j = 0; j < MAP_SIZE; j++) {
-				char value;
-				switch (field.getTile(i, j)) {
-				case TileType::Tree: value = 'T'; break;
-				case TileType::Tent: value = '^'; break;
-				case TileType::TentUnrevealed: value = '*'; break;
-				case TileType::None: value = '_'; break;
-				}
-				std::cout << std::setw(3) << value;
+void Utils::print(const Field& field) {
+	for (int row = 0; row < MAP_SIZE; row++) {
+		for (int col = 0; col < MAP_SIZE; col++) {
+			char value;
+			switch (field.getTile(row, col)) {
+			case TileType::Tree: value = 'O'; break;
+			case TileType::Tent: value = 'T'; break;
+			case TileType::TentUnrevealed: value = 'O'; break;
+			case TileType::None: value = '-'; break;
+			default: value = ' ';
 			}
-			std::cout << std::endl;
+			std::cout << std::setw(3) << value;
 		}
+		std::cout << std::endl;
 	}
-};
+}
