@@ -12,5 +12,6 @@ public:
 		return field;
 	}
 
+	bool isCanPlaceTent(int row, int col);
 };
 

@@ -23,6 +23,9 @@ public:
 			row < MAP_SIZE && col < MAP_SIZE) {
 			tiles[row][col] = tile;
 		}
+		else {
+			throw std::runtime_error("getTile() failed!");
+		}
 	};
 
 	TileType getTile(int row, int col) const {
