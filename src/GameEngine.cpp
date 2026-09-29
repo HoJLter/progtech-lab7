@@ -8,7 +8,7 @@ window(sf::VideoMode(size),
     sf::State::Windowed),
     renderer(window)
 {
-
+    
 }
 
 void GameEngine::handleEvents() {
@@ -27,7 +27,11 @@ void GameEngine::run() {
         handleEvents();
 
         window.clear();
-        renderer.render(logic.getField());
+        renderer.render(
+            logic.getField(), 
+            logic.getRowHints(), 
+            logic.getColHints()
+        );
         window.display();
     }
 }
