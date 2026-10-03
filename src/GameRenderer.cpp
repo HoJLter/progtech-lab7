@@ -4,7 +4,8 @@
 
 
 GameRenderer::GameRenderer(sf::RenderWindow& target) :
-	window(target) {
+	window(target),
+	winLabel(font, "YOU WON", 144) {
 	borders.setFillColor(sf::Color::Transparent);
 	borders.setOutlineColor(sf::Color::White);
 	borders.setOutlineThickness(3.f);
@@ -13,6 +14,21 @@ GameRenderer::GameRenderer(sf::RenderWindow& target) :
 	if (!font.openFromFile("Tovar.otf")) {
 		throw std::runtime_error("Fail while loading font");
 	}
+
+	winLabel.setFillColor(sf::Color(255, 215, 0));
+	winLabel.setOutlineColor(sf::Color(40, 20, 80));
+	winLabel.setOutlineThickness(3.f);
+
+	const auto bounds = winLabel.getLocalBounds();
+	winLabel.setOrigin({
+		bounds.position.x + bounds.size.x / 2.f,
+		bounds.position.y + bounds.size.y / 2.f
+		});
+
+	winLabel.setPosition({
+		window.getSize().x / 2.f,
+		window.getSize().y / 2.f
+		});
 }
 
 
@@ -48,7 +64,7 @@ void GameRenderer::render(
 					break;
 				}
 				case(TileType::TentUnrevealed): {
-					renderTile(row + 1, col + 1, TileType::None);
+					renderTile(row + 1, col + 1, TileType::Tent);
 					break;
 				}
 				case(TileType::None): {
@@ -109,4 +125,10 @@ void GameRenderer::renderLabel(int row, int col, int value) {
 	label.setFillColor(sf::Color::White);
 	window.draw(label);
 	window.draw(borders);
+}
+
+void GameRenderer::renderWinLabel(bool isWin) {
+	if (isWin) {
+		window.draw(winLabel);
+	}
 }

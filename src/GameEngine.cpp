@@ -25,6 +25,7 @@ void GameEngine::run() {
             logic.getRowHints(), 
             logic.getColHints()
         );
+        renderer.renderWinLabel(logic.isWinCondition());
         window.display();
     }
 }

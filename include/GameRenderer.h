@@ -10,6 +10,7 @@ class GameRenderer {
 	sf::RenderWindow& window;
 	sf::Font font;
 	sf::RectangleShape borders;
+	sf::Text winLabel;
 
 public:
 	GameRenderer(sf::RenderWindow& target);
@@ -21,4 +22,5 @@ public:
 	);
 	void renderTile(int row, int col, TileType tile);
 	void renderLabel(int row, int col, int value);
+	void renderWinLabel(bool isWin);
 };
