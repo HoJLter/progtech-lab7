@@ -40,19 +40,19 @@ void GameRenderer::render(
 
 			switch (tile) {
 				case(TileType::Tree): {
-					renderTree(row+1, col+1);
+					renderTile(row+1, col+1, TileType::Tree);
 					break;
 				}
 				case(TileType::Tent): {
-					renderTent(row + 1, col + 1);
+					renderTile(row + 1, col + 1, TileType::Tent);
 					break;
 				}
 				case(TileType::TentUnrevealed): {
-					renderTent(row + 1, col + 1);
+					renderTile(row + 1, col + 1, TileType::None);
 					break;
 				}
 				case(TileType::None): {
-					renderNone(row + 1, col + 1);
+					renderTile(row + 1, col + 1, TileType::None);
 					break;
 				}
 			}
@@ -60,26 +60,35 @@ void GameRenderer::render(
 	}
 }
 
-void GameRenderer::renderTree(int row, int col) {\
+void GameRenderer::renderTile(int row, int col, TileType tile)
+{
 	borders.setPosition({ col * TILE_SIZE, row * TILE_SIZE });
-	sf::CircleShape treeShape(TILE_SIZE/2, 16);
-	treeShape.setPosition({col*TILE_SIZE, row*TILE_SIZE});
-	treeShape.setFillColor(sf::Color::Green);
-	window.draw(treeShape);
-	window.draw(borders);
-}
 
-void GameRenderer::renderTent(int row, int col) {
-	borders.setPosition({ col * TILE_SIZE, row * TILE_SIZE });
-	sf::CircleShape tentShape(TILE_SIZE / 2, 3);
-	tentShape.setPosition({ col * TILE_SIZE, row * TILE_SIZE });
-	tentShape.setFillColor(sf::Color::Yellow);
-	window.draw(tentShape);
-	window.draw(borders);
-}
+	switch (tile)
+	{
+	case TileType::Tree:
+	{
+		sf::CircleShape shape(TILE_SIZE / 2.f, 16);
+		shape.setPosition({ col * TILE_SIZE, row * TILE_SIZE });
+		shape.setFillColor(sf::Color::Green);
+		window.draw(shape);
+		break;
+	}
 
-void GameRenderer::renderNone(int row, int col) {
-	borders.setPosition({ col * TILE_SIZE, row * TILE_SIZE });
+	case TileType::Tent:
+	case TileType::TentUnrevealed:
+	{
+		sf::CircleShape shape(TILE_SIZE / 2.f, 3);
+		shape.setPosition({ col * TILE_SIZE, row * TILE_SIZE });
+		shape.setFillColor(sf::Color::Yellow);
+		window.draw(shape);
+		break;
+	}
+
+	case TileType::None:
+		break;
+	}
+
 	window.draw(borders);
 }
 

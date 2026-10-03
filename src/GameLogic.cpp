@@ -25,8 +25,6 @@ bool GameLogic::isTile(int r, int c, TileType type) const {
 
 
 bool GameLogic::isCanPlaceTent(int row, int col) const {
-
-
 	if (!isTile(row, col, TileType::None)) return false;
 
 	std::vector<std::pair<int, int>> directions = {
@@ -35,7 +33,7 @@ bool GameLogic::isCanPlaceTent(int row, int col) const {
 		{1, -1 }, {1, 0 }, {1, 1}
 	};
 	for (auto dir : directions) {
-		if (isTile(row + dir.first, col + dir.second, TileType::Tent)) {
+		if (isTile(row + dir.first, col + dir.second, TileType::TentUnrevealed)) {
 			return false;
 		}
 	}

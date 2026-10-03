@@ -19,8 +19,6 @@ public:
 		const std::array<int, MAP_SIZE>& rowHints,
 		const std::array<int, MAP_SIZE>& colHints
 	);
-	void renderTree(int row, int col);
-	void renderTent(int row, int col);
-	void renderNone(int row, int col);
+	void renderTile(int row, int col, TileType tile);
 	void renderLabel(int row, int col, int value);
 };
