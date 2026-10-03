@@ -2,6 +2,10 @@
 #include <SFML/Graphics.hpp>
 #include "Field.h"
 
+#define TILE_SIZE 72.f
+#define FULL_MAP_SIZE 11
+
+
 class GameRenderer {
 	sf::RenderWindow& window;
 	sf::Font font;

@@ -1,6 +1,7 @@
 #include "GameLogic.h"
 #include <vector>
 #include <random>
+#include <iostream>
 #include "Utils.h"
 
 GameLogic::GameLogic() {
@@ -43,6 +44,7 @@ bool GameLogic::isCanPlaceTent(int row, int col) const {
 
 void GameLogic::generateField() {
 	field.clearField();
+	unrevealedTentsCount = 0;
 	std::vector<std::pair<int, int>> directions = {
 		   	{-1, 0},
 		{0, -1}, {0, 1},
@@ -69,7 +71,8 @@ void GameLogic::generateField() {
 					field.setTile(
 						row + available[index].first,
 						col + available[index].second,
-						TileType::Tent);
+						TileType::TentUnrevealed);
+					unrevealedTentsCount++;
 				}
 			}
 		}
@@ -96,4 +99,13 @@ int GameLogic::calcHintsForCol(int col) {
 		}
 	}
 	return sum;
+}
+
+
+void GameLogic::tentReveal(int row, int col) {
+	if (field.getTile(row, col) == TileType::TentUnrevealed) {
+		std::cout << "TENT FINDED: " << row << " " << col << std::endl;
+		field.setTile(row, col, TileType::Tent);
+		unrevealedTentsCount--;
+	}
 }

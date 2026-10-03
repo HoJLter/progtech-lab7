@@ -7,6 +7,8 @@ class GameLogic {
 	std::array<int, MAP_SIZE> rowHints;
 	std::array<int, MAP_SIZE> colHints;
 
+	int unrevealedTentsCount;
+
 public:
 	GameLogic();
 
@@ -21,6 +23,12 @@ public:
 	const std::array<int, MAP_SIZE>& getColHints() const {
 		return colHints;
 	}
+
+	void tentReveal(int row, int col);
+	bool isWinCondition() {
+		return unrevealedTentsCount == 0;
+	}
+
 private:
 	void generateField();
 	bool isTile(int row, int col, TileType type) const;

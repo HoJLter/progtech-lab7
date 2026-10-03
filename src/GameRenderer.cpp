@@ -1,8 +1,6 @@
 #include "GameRenderer.h"
 #include <string>
 
-#define TILE_SIZE 72.f
-#define FULL_MAP_SIZE 11
 
 
 GameRenderer::GameRenderer(sf::RenderWindow& target) :
@@ -16,6 +14,7 @@ GameRenderer::GameRenderer(sf::RenderWindow& target) :
 		throw std::runtime_error("Fail while loading font");
 	}
 }
+
 
 void GameRenderer::render(
 	const Field& field, 
@@ -49,7 +48,7 @@ void GameRenderer::render(
 					break;
 				}
 				case(TileType::TentUnrevealed): {
-					renderNone(row + 1, col + 1);
+					renderTent(row + 1, col + 1);
 					break;
 				}
 				case(TileType::None): {

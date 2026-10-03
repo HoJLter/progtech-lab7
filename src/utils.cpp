@@ -9,7 +9,7 @@ void Utils::print(const Field& field) {
 			switch (field.getTile(row, col)) {
 			case TileType::Tree: value = 'O'; break;
 			case TileType::Tent: value = 'T'; break;
-			case TileType::TentUnrevealed: value = 'O'; break;
+			case TileType::TentUnrevealed: value = '-'; break;
 			case TileType::None: value = '-'; break;
 			default: value = ' ';
 			}
